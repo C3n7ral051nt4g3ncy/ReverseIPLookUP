@@ -26,9 +26,9 @@ time.sleep(1)
 def function_choice():
 
     choice = input ("""Type "F" for free Search or "API" if you have a Hacker Target API Key: """)
-    if choice == "F" or choice == "f":
+    if choice in ["F", "f"]:
         reverse_ip_free()
-    if choice == "API" or choice == "api":
+    if choice in ["API", "api"]:
         reverse_ip_with_api()
 
 
@@ -48,15 +48,13 @@ def reverse_ip_free():
 
 
     r = input("* Wanna save this result to a text file ? Y/N \n ~ ")
-    if r == "Y" or r == "y":
-        file = open("dumped.txt", "w")
-        file.write(pwn.text)
-        file.close()
-        sys.exit(1)
-
+    if r in ["Y", "y"]:
+        with open("dumped.txt", "w") as file:
+            file.write(pwn.text)
     else:
         print(" Bye ^_^ ")
-        sys.exit(1)
+
+    sys.exit(1)
 
 
 # Using your own Hacker Target API to avoid search restrictions
@@ -70,15 +68,13 @@ def reverse_ip_with_api():
     print(response.text)
 
     r = input("* Wanna save this result to a text file ? Y/N \n ~ ")
-    if r == "Y" or r == "y":
-        file = open("dumped.txt", "w")
-        file.write(pwn.text)
-        file.close()
-        sys.exit(1)
-
+    if r in ["Y", "y"]:
+        with open("dumped.txt", "w") as file:
+            file.write(pwn.text)
     else:
         print(" Bye ^_^ ")
-        sys.exit(1)
+
+    sys.exit(1)
 
 
 def main():
